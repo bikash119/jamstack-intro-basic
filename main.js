@@ -1,10 +1,10 @@
 const listRepos = async username =>{
   const repos = await fetch(
-    `http://api.github.com/users/${username}/repos?type=owner&sort=updated`
+    `https://api.github.com/users/${username}/repos?type=owner&sort=updated`
   )
     .then(res => res.json())
     .catch(error => console.error(error));
-    
+
     const markup = repos
       .map(
         repo => `
@@ -14,7 +14,7 @@ const listRepos = async username =>{
         `
       )
       .join("")
-      
+
       const content = document.getElementById('repos')
       content.innerHTML = `<ul>${markup}</ul>`;
 };
